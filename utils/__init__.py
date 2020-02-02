@@ -2,6 +2,20 @@ import numpy
 from matplotlib import pyplot
 
 
+def get_data(strokes_filename='../data/strokes-py3.npy', texts_filename='../data/sentences.txt'):
+    # Input:
+    #   strokes_filname - string
+    #   texts_filename - string
+
+    # Output:
+    #   the strokes - numpy 2D-array (T x 3)
+    #   the texts corresponding to the strokes - numpy array (string)
+    strokes = numpy.load(strokes_filename, allow_pickle=True)
+    with open(texts_filename) as f:
+        texts = f.readlines()
+    
+    return strokes, texts
+
 def plot_stroke(stroke, save_name=None):
     # Plot a single example.
     f, ax = pyplot.subplots()
